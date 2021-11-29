@@ -135,6 +135,12 @@ class Polynomial:
             xi = xi * point
         return value
 
+    def evaluate_Horner( self, point ):
+        value = point.field.zero()
+        for c in self.coefficients[::-1]:
+            value = value * point + c
+        return value
+
     def evaluate_domain( self, domain ):
         return [self.evaluate(d) for d in domain]
 
@@ -153,9 +159,4 @@ class Polynomial:
     def scale( self, factor ):
         return Polynomial([(factor^i) * self.coefficients[i] for i in range(len(self.coefficients))])
 
-def test_colinearity( points ):
-    domain = [p[0] for p in points]
-    values = [p[1] for p in points]
-    polynomial = Polynomial.interpolate_domain(domain, values)
-    return polynomial.degree() == 1
 

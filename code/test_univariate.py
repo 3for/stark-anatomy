@@ -11,6 +11,7 @@ def test_distributivity():
     a = Polynomial([one, zero, five, two])
     b = Polynomial([two, two, one])
     c = Polynomial([zero, five, two, five, five, one])
+    print("zyd test c.degree():", c.degree())
 
     lhs = a * (b + c)
     rhs = a * b + a * c
@@ -56,11 +57,12 @@ def test_interpolate():
     five = FieldElement(5, field)
     
     values = [five, two, two, one, five, zero]
-    domain = [FieldElement(i, field) for i in range(1, 6)]
+    domain = [FieldElement(i, field) for i in range(0, 6)]
 
     poly = Polynomial.interpolate_domain(domain, values)
 
     for i in range(len(domain)):
+        assert(poly.evaluate_Horner(domain[i]) == values[i]), "fail interpolate test 1"
         assert(poly.evaluate(domain[i]) == values[i]), "fail interpolate test 1"
 
     # evaluation in random point is nonzero with high probability

@@ -230,3 +230,8 @@ class Fri:
         # all checks passed
         return True
 
+def test_colinearity( points ):
+    domain = [p[0] for p in points]
+    values = [p[1] for p in points]
+    polynomial = Polynomial.interpolate_domain(domain, values)
+    return polynomial.degree() == 1
