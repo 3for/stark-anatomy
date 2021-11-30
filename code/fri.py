@@ -204,7 +204,7 @@ class Fri:
                 ax = offset * (omega^a_indices[s])
                 bx = offset * (omega^b_indices[s])
                 cx = alphas[r]
-                if test_colinearity([(ax, ay), (bx, by), (cx, cy)]) == False:
+                if colinearity_test([(ax, ay), (bx, by), (cx, cy)]) == False:
                     print("colinearity check failure")
                     return False
 
@@ -230,7 +230,7 @@ class Fri:
         # all checks passed
         return True
 
-def test_colinearity( points ):
+def colinearity_test( points ):
     domain = [p[0] for p in points]
     values = [p[1] for p in points]
     polynomial = Polynomial.interpolate_domain(domain, values)

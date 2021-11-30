@@ -56,7 +56,7 @@ Why would $A$, $B$, and $C$ lie on a straight line? Let's find the line that pas
 $$ y = \sum_i y_i \prod_{j \neq i} \frac{x - x_j}{x_i - x_j} \\
 = f(\omega^i) \cdot \frac{x - \omega^{N/2+i}}{\omega^{i} - \omega^{N/2+i}} + f(\omega^{N/2+i}) \cdot \frac{x - \omega^{i}}{\omega^{N/2+i} - \omega^{i}} \\
 =  f(\omega^i) \cdot 2^{-1} \cdot \omega^{-i} \cdot (x + \omega^i) - f(\omega^{N/2+i}) \cdot 2^{-1} \cdot \omega^{-i} (x - \omega^i) \\
-= 2^{-1} \cdot \left( (1 + x \cdot \omega^{-i}) \cdot f(\omega^i) + (1 - x \cdot \omega^i) \cdot f(\omega^{N/2 + i}) \right) \enspace .$$
+= 2^{-1} \cdot \left( (1 + x \cdot \omega^{-i}) \cdot f(\omega^i) + (1 - x \cdot \omega^{-i}) \cdot f(\omega^{N/2 + i}) \right) \enspace .$$
 By setting $x = \alpha$ we get exactly the y-coordinate of $C$.
 
 This description covers one round, at the end of which the prover and verifier are in the same position as they were at the start. The prover wishes to establish that a given Merkle root decommits to a codeword whose defining polynomial has a bounded degree. There is one important difference though: as a result of running one round of FRI, the length of the codeword as well as the number of possibly nonzero coefficients of the polynomial have halved. Prover and verifier can set $f = f^\star$, $D = d^\star$, and repeat the process. After running $\lceil \log_2 (d+1) \rceil - 1$ rounds of FRI, where $d$ is the degree of the original polynomial, prover and verifier end up with a constant polynomial whose codeword is also constant. At this point, the prover sends this constant[^3] instead of the codeword's Merkle root, making it abundantly clear that it corresponds to a polynomial of degree $0$.
